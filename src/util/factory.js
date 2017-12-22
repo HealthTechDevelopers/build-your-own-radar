@@ -177,29 +177,29 @@ const GoogleSheetInput = function () {
 };
 
 function set_document_title() {
-    document.title = "Build your own Radar";
+    document.title = "HTD React Native Ecosystem";
 }
 
 function plotLoading(content) {
-    var content = d3.select('body')
-        .append('div')
-        .attr('class', 'loading')
-        .append('div')
-        .attr('class', 'input-sheet');
-
-    set_document_title();
-
-    plotLogo(content);
-
-    var bannerText = '<h1>Loading...</h1>';
-    plotBanner(content, bannerText);
-    plotFooter(content);
+    // var content = d3.select('body')
+    //     .append('div')
+    //     .attr('class', 'loading')
+    //     .append('div')
+    //     .attr('class', 'input-sheet');
+    //
+    // set_document_title();
+    //
+    // plotLogo(content);
+    //
+    // var bannerText = '<h1>Loading...</h1>';
+    // plotBanner(content, bannerText);
+    // plotFooter(content);
 }
 
 function plotLogo(content) {
-    content.append('div')
-        .attr('class', 'input-sheet__logo')
-        .html('<a href="https://www.thoughtworks.com"><img src="/images/tw-logo.png" / ></a>');
+    // content.append('div')
+    //     .attr('class', 'input-sheet__logo')
+    //     .html('<a href="https://www.thoughtworks.com"><img src="/images/tw-logo.png" / ></a>');
 }
 
 function plotFooter(content) {
@@ -213,9 +213,6 @@ function plotFooter(content) {
         + 'By using this service you agree to <a href="https://www.thoughtworks.com/radar/tos">ThoughtWorks\' terms of use</a>. '
         + 'You also agree to our <a href="https://www.thoughtworks.com/privacy-policy">privacy policy</a>, which describes how we will gather, use and protect any personal data contained in your public Google Sheet. '
         + 'This software is <a href="https://github.com/thoughtworks/build-your-own-radar">open source</a> and available for download and self-hosting.');
-
-
-
 }
 
 function plotBanner(content, text) {

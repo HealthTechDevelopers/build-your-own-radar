@@ -6,8 +6,8 @@ header {
 
   .radar-title {
     background-color: $grey-light;
-    padding-top: 30px;
-    padding-bottom: 30px;
+    padding-top: 15px;
+    padding-bottom: 15px;
     display: table;
     margin: auto;
     width: 100%;
@@ -17,13 +17,13 @@ header {
       width: 70%;
       text-align: left;
       padding-left: 100px;
-      h1 {
-        font-size: 55px;
-        font-weight: 900;
+      h2 {
+        font-size: 45px;
+        font-weight: 600;
         letter-spacing: -.04em;
         line-height: 0.8em;
         margin: 0;
-        text-transform: uppercase;
+        //text-transform: uppercase;
       }
     }
 
