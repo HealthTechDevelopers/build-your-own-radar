@@ -25,27 +25,6 @@
     padding-top: 200px;
   }
 
-  .input-sheet__banner {
-    background-image: url('/images/tech-radar-201711-landing-page-wide.png');
-    background-repeat: no-repeat;
-    background-color: $grey-light;
-    background-size: cover;
-    background-position: center;
-    width: 100%;
-    margin: 0 auto;
-    text-align: center;
-    min-height: 285px;
-    display: table;
-
-    div {
-      display: table-cell;
-      vertical-align: middle;
-    }
-    p, h1 {
-      color: $white;
-    }
-  }
-
   .input-sheet__form {
     width: 50%;
     margin: 0 auto;

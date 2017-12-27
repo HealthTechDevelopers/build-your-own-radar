@@ -1,6 +1,10 @@
 {
   "name": "build-your-own-radar",
-  "version": "0.3.0",
+  "version": "0.3.1",
+  "engines": {
+    "node": "9.2.1",
+    "npm": "5.6.0"
+  },
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,7 +14,8 @@
     "examples:clean": "rm -rf examples/",
     "examples:copy": "mkdir examples && cp -r dist/* examples",
     "examples": "npm run build && npm run examples:clean && npm run examples:copy",
-    "publishExamples": "node ./scripts/publish-examples.js"
+    "publishExamples": "node ./scripts/publish-examples.js",
+    "heroku-postbuild": "npm run build"
   },
   "author": "ThoughtWorks",
   "repository": {
@@ -37,7 +42,8 @@
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.16.1",
     "xmlhttprequest": "^1.8.0",
-    "yargs": "^5.0.0"
+    "yargs": "^5.0.0",
+    "express": "^4.16.2"
   },
   "dependencies": {
     "chance": "^1.0.4",

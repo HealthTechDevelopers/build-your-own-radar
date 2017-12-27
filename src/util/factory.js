@@ -93,7 +93,6 @@ const GoogleSheet = function (sheetReference, sheetName) {
     };
 
     self.init = function () {
-        plotLoading();
         return self;
     };
 
@@ -166,113 +165,14 @@ const GoogleSheetInput = function () {
     var self = {};
     
     self.build = function () {
-        var domainName = DomainName(window.location.search.substring(1));
         var queryParams = QueryParams(window.location.search.substring(1));
-
-        if (domainName && queryParams.sheetId.endsWith('csv')) {
-            var sheet = CSVDocument(queryParams.sheetId);
-            sheet.init().build();
-        }
-        else if (domainName && domainName.endsWith('google.com') && queryParams.sheetId) {
-            var sheet = GoogleSheet(queryParams.sheetId, queryParams.sheetName);
-            console.log(queryParams.sheetName)
-
-            sheet.init().build();
-        } else {
-            var content = d3.select('body')
-                .append('div')
-                .attr('class', 'input-sheet');
-            set_document_title();
-
-            plotLogo(content);
-
-            var bannerText = '<div><h1>Build your own radar</h1><p>Once you\'ve <a href ="https://www.thoughtworks.com/radar/byor">created your Radar</a>, you can use this service' +
-                ' to generate an <br />interactive version of your Technology Radar. Not sure how? <a href ="https://www.thoughtworks.com/radar/how-to-byor">Read this first.</a></p></div>';
-
-            plotBanner(content, bannerText);
-
-            plotForm(content);
-
-            plotFooter(content);
-
-        }
+        var SHEET_URL = "https://docs.google.com/spreadsheets/d/1D2Gm2DWeaed9BxBbVN8LaU54bx4pyXTBM70qUUzIv6Y/edit#gid=0"
+        var sheet = GoogleSheet(SHEET_URL, queryParams.sheetName);
+        sheet.init().build();
     };
 
     return self;
 };
-
-function set_document_title() {
-    document.title = "Build your own Radar";
-}
-
-function plotLoading(content) {
-    var content = d3.select('body')
-        .append('div')
-        .attr('class', 'loading')
-        .append('div')
-        .attr('class', 'input-sheet');
-
-    set_document_title();
-
-    plotLogo(content);
-
-    var bannerText = '<h1>Building your radar...</h1><p>Your Technology Radar will be available in just a few seconds</p>';
-    plotBanner(content, bannerText);
-    plotFooter(content);
-}
-
-function plotLogo(content) {
-    content.append('div')
-        .attr('class', 'input-sheet__logo')
-        .html('<a href="https://www.thoughtworks.com"><img src="/images/tw-logo.png" / ></a>');
-}
-
-function plotFooter(content) {
-    content
-        .append('div')
-        .attr('id', 'footer')
-        .append('div')
-        .attr('class', 'footer-content')
-        .append('p')
-        .html('Powered by <a href="https://www.thoughtworks.com"> ThoughtWorks</a>. '
-        + 'By using this service you agree to <a href="https://www.thoughtworks.com/radar/tos">ThoughtWorks\' terms of use</a>. '
-        + 'You also agree to our <a href="https://www.thoughtworks.com/privacy-policy">privacy policy</a>, which describes how we will gather, use and protect any personal data contained in your public Google Sheet. '
-        + 'This software is <a href="https://github.com/thoughtworks/build-your-own-radar">open source</a> and available for download and self-hosting.');
-
-
-
-}
-
-function plotBanner(content, text) {
-    content.append('div')
-        .attr('class', 'input-sheet__banner')
-        .html(text);
-
-}
-
-function plotForm(content) {
-    content.append('div')
-        .attr('class', 'input-sheet__form')
-        .append('p')
-        .html('<strong>Enter the URL of your <a href="https://www.thoughtworks.com/radar/how-to-byor" target="_blank">published</a> Google Sheet or CSV file below…</strong>');
-
-    var form = content.select('.input-sheet__form').append('form')
-        .attr('method', 'get');
-
-    form.append('input')
-        .attr('type', 'text')
-        .attr('name', 'sheetId')
-        .attr('placeholder', "e.g. https://docs.google.com/spreadsheets/d/<\sheetid\> or hosted CSV file")
-        .attr('required','');
-
-    form.append('button')
-        .attr('type', 'submit')
-        .append('a')
-        .attr('class', 'button')
-        .text('Build my radar');
-
-    form.append('p').html("<a href='https://www.thoughtworks.com/radar/how-to-byor'>Need help?</a>");
-}
 
 function plotErrorMessage(exception) {
     d3.selectAll(".loading").remove();
